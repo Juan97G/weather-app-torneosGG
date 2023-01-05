@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap');
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Mulish', sans-serif;
+  background: linear-gradient(to bottom right, #4cb3d7, #197bb3);
+  height: 100vh;
+  width: 100%;
+  color: white;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 800;
+}
