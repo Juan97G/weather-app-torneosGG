@@ -1,3 +1,8 @@
+.container {
+    background: url("../../assets/img/background-weather.jpg") no-repeat center;
+    background-size: cover;
+}
+
 .main {
     border: 2px solid darkgoldenrod;
     max-width: 1400px;
@@ -25,7 +30,6 @@
     .main {
         width: 500px;
         flex-direction: column;
-        justify-content: space-around;
     }
 }
 
@@ -39,6 +43,6 @@
     .main {
         width: 350px;
         min-height: calc(100vh - 200px);
-        margin-top: 40px;
+        margin-top: 50px;
     }
 }

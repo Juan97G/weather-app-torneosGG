@@ -9,7 +9,7 @@ type Props = {
 
 const Layout = ({children}: Props) => {
     return (
-        <>
+        <div className={css.container}>
             <Header />
 
             <main className={css.main}>
@@ -17,7 +17,7 @@ const Layout = ({children}: Props) => {
             </main>
 
             <Footer />
-        </>
+        </div>
     );
 };
 
