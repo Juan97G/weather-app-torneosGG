@@ -1,11 +1,13 @@
 import React from 'react';
 import Layout from "./components/Layout";
+import Form from "./components/Form";
+import WeatherData from "./components/WeatherData";
 
 function App() {
     return (
         <Layout>
-            <h1>Ciao Tutti</h1>
-            <h1>Ciao Tutti</h1>
+            <Form />
+            <WeatherData />
         </Layout>
     );
 }

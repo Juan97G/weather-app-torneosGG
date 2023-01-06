@@ -1,0 +1,77 @@
+.container {
+    /*border: 1px solid darkviolet;*/
+    flex: 1;
+}
+
+.temperature {
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.temperatureValue {
+    font-size: 100px;
+    position: relative;
+    font-weight: 700;
+}
+
+.temperatureValue span {
+    font-size: 50px;
+    font-weight: 400;
+    position: absolute;
+    top: 20px;
+}
+.temperatureIcon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.temperatureIcon h3 {
+    font-weight: 500;
+    margin-top: -15px;
+}
+
+.humidityAndWind {
+    margin: 20px 15px 15px;
+    padding: 15px 25px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.humidityAndWindDetails {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.humidityAndWindDetails:first-of-type {
+    border-bottom: 1px solid #c5c4c4;
+}
+
+.humidityAndWindDetails span {
+    font-weight: 700;
+}
+
+@media screen and (max-width: 992px) {
+    .temperatureValue {
+        font-size: 90px;
+        margin-right: 60px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .temperatureValue span {
+        font-size: 40px;
+    }
+
+    .humidityAndWind {
+        width: 300px;
+        margin: 30px auto 0;
+    }
+
+    .humidityAndWindDetails span {
+        font-size: 15px;
+    }
+}
