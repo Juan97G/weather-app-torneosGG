@@ -2,11 +2,23 @@ import React, {useState} from 'react';
 import css from "./Form.module.css";
 import Switch from "react-switch";
 import {ClipLoader} from "react-spinners";
+import {useDispatch} from "react-redux";
+import {DataForm} from "../../types";
+
+import {fetchDataWeather} from "../../redux/slices/weatherSlice";
 
 const Form = () => {
 
-    const [loading, setLoading] = useState<boolean>(true);
+    /* STATES */
+    const [loading, setLoading] = useState<boolean>(false);
+    const [city, setCity] = useState<string>('Ibague');
+    const [celsius, setCelsius] = useState<boolean>(false);
+    const [fahrenheit, setFahrenheit] = useState<boolean>(false);
 
+    const dispatch = useDispatch();
+
+    // @ts-ignore
+    dispatch(fetchDataWeather({city,celsius}));
     return (
         <div className={css.container}>
             <form>
@@ -17,12 +29,14 @@ const Form = () => {
                         name="city"
                         id="city"
                         placeholder="e.g. Ibague"
+                        value={city}
+                        onChange={(ev) => setCity(ev.target.value)}
                     />
                 </div>
                 <div className={css.formSwitch}>
                     <Switch
-                        checked={true}
-                        onChange={() => console.log("Change switch")}
+                        checked={celsius}
+                        onChange={() => setCelsius(!celsius)}
                         onColor="#197bb3"
                         uncheckedIcon={false}
                     />
@@ -30,12 +44,12 @@ const Form = () => {
                 </div>
                 <div className={css.formSwitch}>
                     <Switch
-                        checked={false}
-                        onChange={() => console.log("Change switch")}
+                        checked={fahrenheit}
+                        onChange={() => setFahrenheit(!fahrenheit)}
                         onColor="#197bb3"
                         uncheckedIcon={false}
                     />
-                    <label htmlFor="">Farenheit</label>
+                    <label htmlFor="">Fahrenheit</label>
                 </div>
                 <button type="submit" className={css.button}>
                     { loading ? <ClipLoader color="#EEE" size={25} /> : 'SEARCH' }
