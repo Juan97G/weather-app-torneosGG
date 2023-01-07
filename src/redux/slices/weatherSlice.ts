@@ -10,6 +10,8 @@ export const weatherSlice = createSlice({
         temp: 0,
         humidity: 0,
         wind: 0,
+        dt: 0,
+        timezone: 0,
         loading: false,
         units: '',
         error: false
@@ -22,6 +24,8 @@ export const weatherSlice = createSlice({
             state.humidity = action.payload.humidity;
             state.wind = action.payload.wind;
             state.units = action.payload.units;
+            state.dt = action.payload.dt;
+            state.timezone = action.payload.timezone;
         },
 
         setChangeLoading: (state, action) => {
@@ -66,6 +70,8 @@ export const fetchDataWeather = (dataForm: DataForm) => {
                 temp: response.data.main.temp,
                 humidity: response.data.main.humidity,
                 wind: response.data.wind.speed,
+                dt: response.data.dt,
+                timezone: response.data.timezone,
                 units
             }
 
