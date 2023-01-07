@@ -33,8 +33,13 @@
     margin-top: -15px;
 }
 
+.time {
+    text-align: center;
+    margin-top: 20px;
+}
+
 .humidityAndWind {
-    margin: 20px 15px 15px;
+    margin: 12px 15px 15px;
     padding: 15px 25px;
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 5px;
@@ -68,7 +73,7 @@
 
     .humidityAndWind {
         width: 300px;
-        margin: 30px auto 0;
+        margin: 20px auto 0;
     }
 
     .humidityAndWindDetails span {

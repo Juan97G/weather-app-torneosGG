@@ -1,35 +1,50 @@
 import React, {useState} from 'react';
 import css from "./WeatherData.module.css";
-import Img from "../../assets/img/10d@2x.png";
+
+import { useSelector } from "react-redux";
+import {calculateCurrentTime} from "../../utils";
 
 const WeatherData = () => {
 
+    /* STATES */
     const [show, setShow] = useState<boolean>(false);
+
+    /* HOOKS */
+    // @ts-ignore
+    const weatherInfo = useSelector(state => state.weather);
 
     return (
         <div className={css.container}>
             {
-                show
+                weatherInfo.weatherMain !== ''
                     ? (
                         <>
                             <div className={css.temperature}>
                                 <div className={css.temperatureValue}>
-                                    18 <span>°C</span>
+                                    {parseInt(weatherInfo.temp)}
+                                    <span>°{weatherInfo.units === 'metric' ? 'C' : 'F'}</span>
                                 </div>
                                 <div className={css.temperatureIcon}>
-                                    <img src={Img} alt="Icon weather" width={120}/>
-                                    <h3>Rainy</h3>
+                                    <img
+                                        src={`http://openweathermap.org/img/wn/${weatherInfo.weatherIcon}@2x.png`}
+                                        alt="Icon weather"
+                                        width={120}/>
+                                    <h3>{weatherInfo.weatherMain}</h3>
                                 </div>
                             </div>
+
+                            <p className={css.time}>Current time {calculateCurrentTime(weatherInfo.dt, weatherInfo.timezone)}</p>
 
                             <div className={css.humidityAndWind}>
                                 <div className={css.humidityAndWindDetails}>
                                     <h4>Humidity</h4>
-                                    <span>62%</span>
+                                    <span>{weatherInfo.humidity}%</span>
                                 </div>
                                 <div className={css.humidityAndWindDetails}>
                                     <h4>Wind Speed</h4>
-                                    <span>20 METER/SEC</span>
+                                    <span>
+                                        {weatherInfo.wind}
+                                        {weatherInfo.units === 'metric' ? ' METER/SEC' : ' MILES/HOUR'}</span>
                                 </div>
                             </div>
                         </>
