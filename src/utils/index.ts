@@ -1,4 +1,4 @@
-export const calculateCurrentTime = (dt: number, timezone: number) => {
+export const calculateCurrentTime = (dt: number, timezone: number): string => {
     const current = new Date((dt + timezone)*1000);
 
     const hours = current.getUTCHours() < 10 ? `0${current.getUTCHours()}` : current.getUTCHours();

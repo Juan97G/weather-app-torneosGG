@@ -4,7 +4,6 @@
 }
 
 .main {
-    border: 2px solid darkgoldenrod;
     max-width: 1400px;
     min-height: calc(100vh - 150px);
     margin: 0 auto;
