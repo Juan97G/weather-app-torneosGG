@@ -22,7 +22,7 @@ const WeatherData = () => {
                                 </div>
                                 <div className={css.temperatureIcon}>
                                     <img
-                                        src={`http://openweathermap.org/img/wn/${weatherInfo.weatherIcon}@2x.png`}
+                                        src={`https://openweathermap.org/img/wn/${weatherInfo.weatherIcon}@2x.png`}
                                         alt="Icon weather"
                                         width={120}/>
                                     <h3>{weatherInfo.weatherMain}</h3>
