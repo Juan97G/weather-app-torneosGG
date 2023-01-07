@@ -56,7 +56,7 @@ export const fetchDataWeather = (dataForm: DataForm) => {
             const {city, celsius} = dataForm;
             const appId = 'dfb59c1dd2b6488034b88b0573314017';
 
-            const urlLatLon = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${appId}`;
+            const urlLatLon = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${appId}`;
             let response = await axios(urlLatLon);
 
             const {lat, lon} = response.data[0];
