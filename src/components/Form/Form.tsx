@@ -2,22 +2,21 @@ import React, {useState, useEffect} from 'react';
 import css from "./Form.module.css";
 import Switch from "react-switch";
 import {ClipLoader} from "react-spinners";
-import {useDispatch, useSelector} from "react-redux";
 import { toast } from "react-hot-toast";
 
-import {fetchDataWeather, setStateError} from "../../redux/slices/weatherSlice";
+import {fetchDataWeather, setStateError} from "../../redux/slices/weather.slice";
+import {useAppDispatch, useAppSelector} from "../../redux/store";
 
 const Form = () => {
 
     /* STATES */
-    const [city, setCity] = useState<string>('Cali');
+    const [city, setCity] = useState<string>('');
     const [celsius, setCelsius] = useState<boolean>(true);
     const [fahrenheit, setFahrenheit] = useState<boolean>(false);
 
     /* HOOKS */
-    const dispatch = useDispatch();
-    // @ts-ignore
-    const {loading, error} = useSelector(state => state.weather);
+    const dispatch = useAppDispatch();
+    const {loading, error} = useAppSelector(state => state.weather);
 
     useEffect(() => {
         if(error){

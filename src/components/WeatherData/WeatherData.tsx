@@ -1,17 +1,13 @@
 import React, {useState} from 'react';
 import css from "./WeatherData.module.css";
 
-import { useSelector } from "react-redux";
 import {calculateCurrentTime} from "../../utils";
+import {useAppSelector} from "../../redux/store";
 
 const WeatherData = () => {
 
-    /* STATES */
-    const [show, setShow] = useState<boolean>(false);
-
     /* HOOKS */
-    // @ts-ignore
-    const weatherInfo = useSelector(state => state.weather);
+    const weatherInfo = useAppSelector(state => state.weather);
 
     return (
         <div className={css.container}>
@@ -21,7 +17,7 @@ const WeatherData = () => {
                         <>
                             <div className={css.temperature}>
                                 <div className={css.temperatureValue}>
-                                    {parseInt(weatherInfo.temp)}
+                                    {Math.floor(weatherInfo.temp)}
                                     <span>°{weatherInfo.units === 'metric' ? 'C' : 'F'}</span>
                                 </div>
                                 <div className={css.temperatureIcon}>

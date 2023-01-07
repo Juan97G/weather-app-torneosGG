@@ -1,23 +1,25 @@
-import {createSlice} from "@reduxjs/toolkit";
-import {DataForm} from "../../types";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {WeatherData, DataForm} from "../../types";
 import axios from "axios";
+
+const initialState: WeatherData = {
+    weatherMain: '',
+    weatherIcon: '',
+    temp: 0,
+    humidity: 0,
+    wind: 0,
+    dt: 0,
+    timezone: 0,
+    loading: false,
+    units: '',
+    error: false
+}
 
 export const weatherSlice = createSlice({
     name: 'weather',
-    initialState: {
-        weatherMain: '',
-        weatherIcon: '',
-        temp: 0,
-        humidity: 0,
-        wind: 0,
-        dt: 0,
-        timezone: 0,
-        loading: false,
-        units: '',
-        error: false
-    },
+    initialState,
     reducers: {
-        setDataWeather: (state, action)=> {
+        setDataWeather: (state, action: PayloadAction<WeatherData>): void => {
             state.weatherMain = action.payload.weatherMain;
             state.weatherIcon = action.payload.weatherIcon;
             state.temp = action.payload.temp;
@@ -28,11 +30,11 @@ export const weatherSlice = createSlice({
             state.timezone = action.payload.timezone;
         },
 
-        setChangeLoading: (state, action) => {
+        setChangeLoading: (state, action: PayloadAction<boolean>): void => {
             state.loading = action.payload;
         },
 
-        setStateError: (state, action) => {
+        setStateError: (state, action: PayloadAction<boolean>): void => {
             state.error = action.payload;
         }
     }
@@ -64,7 +66,7 @@ export const fetchDataWeather = (dataForm: DataForm) => {
             const urlWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}&units=${units}`;
             response = await axios(urlWeather);
 
-            const objWeather = {
+            const objWeather: WeatherData = {
                 weatherMain: response.data.weather[0].main,
                 weatherIcon: response.data.weather[0].icon,
                 temp: response.data.main.temp,
